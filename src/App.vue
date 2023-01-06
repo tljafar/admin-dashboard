@@ -1,28 +1,47 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app" class="my-5" :class="[isContainerFluid ? 'container-fluid' : 'container']">
+    <button type="button" class="btn btn-primary my-3" @click="isContainerFluid = !isContainerFluid">{{ isContainerFluid? 'Container': 'Container Fluid' }}</button>
+    <div class="d-lg-flex">
+      <div class="flex-fill border-right bg-secondary" style="opacity: 0.4; margin-right: 20px">
+        <div></div>
+      </div>
+      <div style="width:calc(100% - 215px)">
+        <div>
+          <h5 class="card-heading">Analytics Overview</h5>
+          <div class="row">
+            <div class="col-lg-9">
+              <ProgressChart class="mb-3" />
+            </div>
+            <div class="col-lg-3">
+              <div class="card card-body">
+                <DoughnutChart />
+              </div>
+            </div>
+          </div>
+          <LinChart />
+        </div>
+      </div>
+    </div>
+
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import DoughnutChart from './components/DoughnutChart.vue';
+import LinChart from './components/LinChart.vue';
+import ProgressChart from './components/ProgressChart.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    LinChart,
+    ProgressChart,
+    DoughnutChart
+  },
+  data() {
+    return {
+      isContainerFluid: false
+    }
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
