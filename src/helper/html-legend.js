@@ -63,12 +63,17 @@ export const htmlLegendPlugin = {
       // Color box
       const boxSpan = document.createElement("span");
       boxSpan.style.background = item.fillStyle;
-      boxSpan.style.borderColor = item.strokeStyle;
-      boxSpan.style.borderWidth = 1 + "px";
-      boxSpan.style.borderStyle = "solid";
-      boxSpan.style.borderRadius = "10px";
+      // boxSpan.style.borderColor = item.strokeStyle;
+      // boxSpan.style.borderWidth = 1 + "px";
+      boxSpan.style.outline = "1px solid " + item.strokeStyle;
+      boxSpan.style.borderRadius = "50%";
       boxSpan.style.display = "flex";
+      boxSpan.style.alignItems = "center";
+      boxSpan.style.justifyContent = "center";
+
       boxSpan.style.marginRight = "5px";
+      boxSpan.style.width = "17px";
+      boxSpan.style.height = "17px";
 
       const boxSpanChild = document.createElement("span");
       boxSpanChild.style.backgroundColor = item.hidden ? "" : item.strokeStyle;
@@ -76,7 +81,7 @@ export const htmlLegendPlugin = {
       boxSpanChild.style.display = "inline-block";
       boxSpanChild.style.height = "9px";
       boxSpanChild.style.width = "9px";
-      boxSpanChild.style.margin = "4px";
+      // boxSpanChild.style.margin = "4px";
       boxSpan.appendChild(boxSpanChild);
 
       // Text
@@ -99,7 +104,7 @@ export const htmlLegendPlugin = {
       svgInfo.style.marginLeft = "18px";
       svgInfo.style.display = "flex";
       svgInfo.style.cursor = "pointer";
-      svgInfo.style.color = "#B8BED9"
+      svgInfo.style.color = "#B8BED9";
       groupBox.appendChild(boxSpan);
       groupBox.appendChild(textContainer);
       li.appendChild(groupBox);

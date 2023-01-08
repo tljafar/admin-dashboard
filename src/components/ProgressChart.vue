@@ -1,5 +1,5 @@
 <template>
-    <div class="card card-body">
+    <div>
         <div class="al-box">
             <ul class="al-box-list">
                 <li v-for="(item, index) in datasets" :key="index" :class="{ 'flex-fill': index === 2 }">
@@ -17,14 +17,14 @@
             </ul>
         </div>
 
-        <div style="display: flex; margin-top: 15px;">
+        <div style="display: flex; margin-top: 15px; margin-bottom: 10px;">
             <div v-for="(item, index) in stackdatasets" :key="index" :style="{ marginLeft: index !== 0 ? '-4px' : '', display: 'block', backgroundColor: item.color, borderRadius: '8px', height: '8px', width: item.percentage }"></div>
         </div>
     </div>
 </template>
 <script>
 var randomScalingFactor = function () {
-    const value = Math.round(Math.random() * 80000 + 20000);
+    const value = Math.round(Math.random() * 800000 + 20000);
     const formatedValue = new Intl.NumberFormat('en-US', { currency: 'USD', style: 'currency' }).format(value);
     return {
         value,

@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap");
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
 body {
   background-color: #f3f5fa !important;
@@ -17,6 +18,12 @@ body {
   color: black;
   margin-bottom: 1rem;
 }
+.card-subheading {
+  font-size: 15px;
+  font-weight: 600;
+  color: black;
+  margin-bottom: 1rem;
+}
 #my-chart-id {
   height: 500px;
 }
@@ -25,7 +32,7 @@ body {
   &-list {
     display: flex;
     list-style-type: none;
-    margin-top: 90px;
+    margin-top: 110px;
     padding: 0;
     background-color: white;
     &-float {
@@ -59,13 +66,13 @@ body {
     }
     li:first-child,
     li:last-child {
-      width: 15%;
+      min-width: 15%;
     }
     li:nth-child(2),
     li:nth-child(4) {
-      width: 25%;
+      min-width: 25%;
     }
-   
+
     li:nth-child(1):after {
       content: "";
       position: absolute;
@@ -138,4 +145,25 @@ body {
       white-space: nowrap;
     }
   }
+}
+.dashboard-content {
+  width: calc(100% - 215px);
+  padding: 60px 15px 5px 30px;
+  // margin-left: 215px;
+}
+@include media-breakpoint-up(lg) {
+  .col-lg-70 {
+    flex: 0 0 70%;
+    max-width: 70%;
+  }
+  .col-lg-30 {
+    flex: 0 0 30%;
+    max-width: 30%;
+  }
+}
+
+#doughnut-chart{
+  min-height: 200px;
+  height: 100% !important;
+  width: auto;
 }

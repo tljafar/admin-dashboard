@@ -11,6 +11,7 @@
 </template>
   
 <script>
+
 import { Line as LineChartGenerator } from 'vue-chartjs'
 import {
     Chart as ChartJS, Title, Tooltip, Legend, LineElement, LinearScale, CategoryScale, PointElement,

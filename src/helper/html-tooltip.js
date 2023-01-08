@@ -50,9 +50,9 @@ export const customTooltip = function (context) {
       let bodyLabel = body[0] || "";
       let bodyValue = body[1] || "";
       const colors = tooltipModel.labelColors[i];
-      let style = "background:" + colors.borderColor;
-      style += "; width: 6px; height: 6px; border-radius: 20px; margin: 3px 8px 3px 0; display: inline-block";
-      let span = `<span style="${style}"></span><span style="flex-grow: 1">${bodyLabel}</span><span style="font-weight:600; margin-left: 10px ">${bodyValue}</span>`;
+      let style = "color:" + colors.borderColor;
+      style += "; display: block; font-size: 25px; line-height: 12px";
+      let span = `<span style="${style}">&bull;</span><span style="flex-grow: 1; margin-left: 6px">${bodyLabel}</span><span style="font-weight:600; margin-left: 10px ">${bodyValue}</span>`;
       innerHtml += `<tr><td style="display: flex; align-items: center; padding-bottom: 5px">${span}</td></tr>`;
     });
     innerHtml += "</tbody>";

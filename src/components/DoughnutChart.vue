@@ -13,7 +13,7 @@
 
 <script>
 import { Doughnut } from 'vue-chartjs/legacy'
-import { customDoughnutTooltip } from '../helper/chart-helper'
+import { customDoughnutTooltip, setInitTooltipValue } from '../helper/chart-helper'
 
 import {
     Chart as ChartJS,
@@ -27,7 +27,7 @@ import {
 ChartJS.register(Title, Tooltip, Legend, ArcElement, CategoryScale)
 
 var randomScalingFactor = function () {
-    return Math.round(Math.random() * 900 + 100);
+    return Math.round(Math.random() * 900000 + 100);
 };
 
 const datasetsObj = [
@@ -43,8 +43,9 @@ const datasets = {
     backgroundColor: datasetsObj.map(item => item.color),
     data: datasetsObj.map(() => randomScalingFactor()),
     borderRadius: 5,
-    cutout: '70%'
-
+    cutout: '70%',
+    hoverBorderWidth: 0,
+    hoverOffset: 15
 }
 
 export default {
@@ -70,7 +71,7 @@ export default {
             default: -1
         },
         cssClasses: {
-            default: '',
+            default: 'h-100',
             type: String
         },
         styles: {
@@ -79,7 +80,7 @@ export default {
         },
         plugins: {
             type: Array,
-            default: () => []
+            default: () => [setInitTooltipValue]
         }
     },
     data() {
@@ -91,6 +92,13 @@ export default {
             chartOptions: {
                 responsive: true,
                 maintainAspectRatio: false,
+                showAllTooltips: true,
+                layout: {
+                    padding: {
+                        top: 7,
+                        bottom: 7
+                    }
+                },
                 plugins: {
                     tooltip: {
                         enabled: false,
@@ -108,6 +116,10 @@ export default {
                     legend: {
                         display: false
                     }
+                },
+                interaction: {
+                    mode: 'nearest',
+                    intersect: true
                 }
             },
 

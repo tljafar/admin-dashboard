@@ -17,7 +17,7 @@ export const customDoughnutTooltip = function (context) {
   // Hide if no tooltip
   const tooltipModel = context.chart.tooltip;
   if (tooltipModel.opacity === 0) {
-    tooltipEl.style.opacity = 0;
+    // tooltipEl.style.opacity = 0;
     return;
   }
   if (tooltipModel.body) {
@@ -48,4 +48,13 @@ export const customDoughnutTooltip = function (context) {
   tooltipEl.style.fontWeight = 600;
   tooltipEl.style.pointerEvents = "none";
   tooltipEl.style.transition = "opacity 0.1s ease-in-out, top 0.1s ease-in-out, left 0.1s ease-in-out";
-}
+};
+
+export const setInitTooltipValue = {
+  afterDraw: (chart) => {
+    if (!(chart.tooltip._active && chart.tooltip._active.length && chart.tooltip.getActiveElements().length)) {
+      chart.tooltip.setActiveElements([{ datasetIndex: 0, index: 0 }]);
+      chart.update();
+    }
+  },
+};
