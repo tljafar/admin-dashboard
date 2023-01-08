@@ -1,0 +1,21 @@
+<template>
+    <LongCardMini :is-dark-mode="true" :items="items" />
+</template>
+<script>
+import { randomScalingFactor } from '../helper';
+import LongCardMini from './LongCardMini.vue';
+const maximum = 100000;
+
+export default {
+    name: "PrintOnDemandReport",
+    components: { LongCardMini },
+    data() {
+        return {
+            items: [
+                { label: 'Printify Total Costs', amount: randomScalingFactor(maximum).formatedValue, logo: 'printify' },
+                { label: 'Printful Total Costs', amount: randomScalingFactor(maximum).formatedValue, logo: 'printful' },
+            ]
+        }
+    }
+}
+</script>

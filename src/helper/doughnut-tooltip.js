@@ -29,7 +29,7 @@ export const customDoughnutTooltip = function (context) {
       let bodyValue = body[1] || "";
       const colors = tooltipModel.labelColors[i];
       innerHtml += `<div style="color: ${colors.backgroundColor}; font-size: 15px; line-height: 1">${bodyLabel}</div>`;
-      innerHtml += `<div style="color: ${colors.backgroundColor}; font-size: 16px; line-height: 1">${bodyValue}</div>`;
+      innerHtml += `<div style="color: #283977; font-size: 16px; line-height: 1">${bodyValue}</div>`;
     });
     tooltipEl.innerHTML = `<div>${innerHtml}</div>`;
   }

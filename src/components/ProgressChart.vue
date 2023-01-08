@@ -24,7 +24,7 @@
 </template>
 <script>
 var randomScalingFactor = function () {
-    const value = Math.round(Math.random() * 800000 + 20000);
+    const value = Math.round(Math.random() * 800 + 200);
     const formatedValue = new Intl.NumberFormat('en-US', { currency: 'USD', style: 'currency' }).format(value);
     return {
         value,

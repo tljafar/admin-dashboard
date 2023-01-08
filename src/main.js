@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import App from './App.vue'
-// import 'bootstrap/dist/css/bootstrap.css'
-import './assets/style.scss'
+import FloatingVue from 'floating-vue'
+import 'floating-vue/dist/style.css'
+import './assets/scss/style.scss'
 Vue.config.productionTip = false
-
+Vue.use(FloatingVue)
 new Vue({
   render: h => h(App),
 }).$mount('#app')

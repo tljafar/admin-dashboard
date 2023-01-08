@@ -1,17 +1,38 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap");
-@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+@import "../../../node_modules/bootstrap/scss/bootstrap.scss";
+
+@import "variable";
+@import "summary";
+@import "card-mini";
+@import "switch";
 
 body {
   background-color: #f3f5fa !important;
   font-family: "Poppins", sans-serif;
   font-weight: 400;
 }
-@media (min-width: 1360px) {
-  .container {
-    max-width: 1280px;
+.page-seperator {
+  font-size: 20px;
+  font-weight: 500;
+  color: black;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  &:after {
+    content: "";
+    height: 1px;
+    background-color: rgba($color: $grey, $alpha: 0.2);
+    width: 100%;
+    margin-left: 10px;
   }
 }
-
+.card {
+  border-color: #e9ecef;
+  box-shadow: 2px 2px 2px #69696916;
+  border-radius: 0.55rem;
+  padding: 16px;
+}
 .card-heading {
   font-size: 18px;
   font-weight: 600;
@@ -22,7 +43,7 @@ body {
   font-size: 15px;
   font-weight: 600;
   color: black;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
 }
 #my-chart-id {
   height: 500px;
@@ -147,9 +168,10 @@ body {
   }
 }
 .dashboard-content {
-  width: calc(100% - 215px);
-  padding: 60px 15px 5px 30px;
-  // margin-left: 215px;
+  @include media-breakpoint-up(lg) {
+    width: calc(100% - 215px);
+    padding: 60px 15px 5px 30px;
+  }
 }
 @include media-breakpoint-up(lg) {
   .col-lg-70 {
@@ -162,8 +184,29 @@ body {
   }
 }
 
-#doughnut-chart{
+#doughnut-chart {
   min-height: 200px;
   height: 100% !important;
   width: auto;
+}
+
+.border-left-1 {
+  border-left: 1px solid #8691b4;
+}
+
+.border-right-1 {
+  border-right: 1px solid #8691b4;
+}
+
+@each $name, $value in $colors {
+  .text-#{$name} {
+    color: $value;
+  }
+  .bg-#{$name} {
+    background-color: $value;
+  }
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
 }
