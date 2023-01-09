@@ -2,14 +2,16 @@
     <div class="row">
         <div class="col-lg-9">
             <div class="row">
-                <div v-for="(item, index) in items" :key="index" class="col-lg-4 mb-4">
+                <div v-for="(item, index) in items" :key="index" class="col-lg-4 col-sm-6 mb-4">
                     <CardItem :index="index" :item="item" />
                 </div>
             </div>
         </div>
         <div class="col-lg-3">
-            <div v-for="(item, index) in customItems" :key="index" class="mb-4">
-                <CardItem :index="index" :item="item" />
+            <div class="row">
+                <div v-for="(item, index) in customItems" :key="index" class="col-lg-12 col-sm-6 mb-4">
+                    <CardItem :index="index" :item="item" />
+                </div>
             </div>
         </div>
     </div>

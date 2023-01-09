@@ -11,7 +11,7 @@
         </div>
         <div class="page-seperator-border"></div>
         <div class="py-3 px-5">
-            <p class="mb-0">@ Copyright Syncost. All rights reserved.</p>
+            <p class="mb-0 text-center text-lg-left">@ Copyright Syncost. All rights reserved.</p>
         </div>
     </footer>
 </template>

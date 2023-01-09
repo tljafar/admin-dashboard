@@ -5,7 +5,7 @@ ul.chart-line-legend, .chart-pie-tooltip {
 }
 
 .chart-line-wrapper{
-  @include media-breakpoint-down(lg){
+  @include media-breakpoint-down(md){
     width: 850px;
   }
 }

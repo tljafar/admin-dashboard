@@ -1,5 +1,5 @@
 <template>
-    <div class="card card-body" style="overflow-x: auto;">
+    <simplebar class="card card-body">
         <h5 class="card-heading">Overview</h5>
         <div class="chart-line-wrapper">
             <div id="legend-container"></div>
@@ -10,10 +10,11 @@
                 :chart-data="chartData"
                 style="height: 500px;" />
         </div>
-    </div>
+    </simplebar>
 </template>
   
 <script>
+import simplebar from 'simplebar-vue';
 
 import { Line as LineChartGenerator } from 'vue-chartjs'
 import {
@@ -66,7 +67,7 @@ const datasets = [
 ChartJS.defaults.font.family = '"Segoe UI", Tahoma, Geneva, Verdana, sans-serif';
 export default {
     name: 'LineChart',
-    components: { LineChartGenerator },
+    components: { LineChartGenerator, simplebar },
     data() {
         return {
             chartData: {

@@ -1,5 +1,5 @@
 <template>
-    <div class="card card-body card-mini" :class="{ 'card-mini-dark': isDarkMode, 'card-mini-list-scroll': item.child_items }" :style="[item.is_toggle_btn && item.enabled ===false && {'background-color': '#ffffff2e'}]">
+    <component v-bind:is="tag" class="card card-body card-mini" :class="{ 'card-mini-dark': isDarkMode, 'card-mini-list-scroll': item.child_items }" :style="[item.is_toggle_btn && item.enabled === false && { 'background-color': '#ffffff2e' }]">
         <div class="card-mini-icon text-grey d-none">
             <svg xmlns="http://www.w3.org/2000/svg" width="15.384" height="15.384" viewBox="0 0 15.384 15.384" fill="currentColor">
                 <g>
@@ -34,12 +34,15 @@
                 </li>
             </ul>
         </div>
-    </div>
+    </component>
 </template>
 
 <script>
+import simplebar from 'simplebar-vue';
+
 export default {
     name: "CardItem",
+    components: { simplebar },
     props: {
         index: {
             type: Number,
@@ -54,5 +57,10 @@ export default {
             default: () => ({})
         }
     },
+    computed: {
+        tag() {
+            return this.item.child_items ? 'simplebar' : 'div';
+        }
+    }
 }
 </script>

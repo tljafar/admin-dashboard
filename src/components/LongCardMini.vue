@@ -1,8 +1,8 @@
 <template>
-    <div class="card card-body" :class="{ 'card-mini-dark': isDarkMode }">
-        <div :class="{ 'row': !isFullWidth }">
-            <div v-for="(item, index) in items" :key="index" class="card-mini card-mini-wide" :class="[columnClassName, { 'border-l-1': index !== 0 }]" :style="[isFullWidth && { width: 100 / itemsCount + '%' }]">
-                <div class="d-flex justify-content-center">
+    <div class="long-mini-card row">
+        <div v-for="(item, index) in items" :key="index" class="long-mini-card-item" :class="[columnClassName]">
+            <div class="card card-body card-mini card-mini-wide" :class="{ 'card-mini-dark': isDarkMode }">
+                <div class="card-content d-flex justify-content-center">
                     <img v-if="item.logo === 'printify'" src="@/assets/images/printify.svg" alt="logo" style="width: 20px; height: 20px; margin-top: -3px; margin-right: 5px;">
                     <img v-if="item.logo === 'printful'" src="@/assets/images/printful.svg" alt="logo" style="width: 25px; height: 25px; margin-top: -4px; margin-right: 5px;">
                     <div class="text-center">
@@ -31,10 +31,6 @@ export default {
             type: Boolean,
             default: false,
         },
-        isFullWidth: {
-            type: Boolean,
-            default: false,
-        },
         items: {
             type: Array,
             default: () => []
@@ -45,15 +41,14 @@ export default {
             return this.items.length;
         },
         columnClassName() {
-            let className = 'col-';
-            if (this.itemsCount > 6) {
-                className += 'lg-'
-            }
+            let className = '';
+
             if (this.itemsCount < 3) {
                 className += 12 / this.itemsCount;
             } else {
                 className += 4;
             }
+            className = `col-12 col-sm-${className}`
             return this.isFullWidth ? '' : className;
         },
     }

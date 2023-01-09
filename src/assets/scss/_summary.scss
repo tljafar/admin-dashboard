@@ -1,6 +1,7 @@
 .summary {
   &-wrapper {
     display: flex;
+    justify-content: space-between;
   }
   &-item {
     display: flex;
@@ -10,6 +11,8 @@
     padding: 0 5px;
     text-align: center;
     line-height: 1;
+    min-width: 150px;
+    flex: 1 1 auto;
   }
 
   &-subtitle {

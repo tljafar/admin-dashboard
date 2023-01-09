@@ -1,6 +1,6 @@
 <template>
     <div class="row">
-        <div v-for="(item, index) in items" :key="index" class="col-lg-3 mb-4">
+        <div v-for="(item, index) in items" :key="index" class="col-lg-3 col-sm-6 mb-4">
             <CardItem :index="index" :item="item" :is-dark-mode="true" />
         </div>
     </div>
