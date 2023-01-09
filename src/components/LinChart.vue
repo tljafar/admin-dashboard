@@ -1,12 +1,15 @@
 <template>
-    <div class="card card-body">
+    <div class="card card-body" style="overflow-x: auto;">
         <h5 class="card-heading">Overview</h5>
-        <div id="legend-container"></div>
-        <LineChartGenerator
-            id="my-chart-id"
-            :chart-options="chartOptions"
-            :plugins="plugins"
-            :chart-data="chartData" />
+        <div class="chart-line-wrapper">
+            <div id="legend-container"></div>
+            <LineChartGenerator
+                id="my-chart-id"
+                :chart-options="chartOptions"
+                :plugins="plugins"
+                :chart-data="chartData"
+                style="height: 500px;" />
+        </div>
     </div>
 </template>
   
@@ -14,9 +17,9 @@
 
 import { Line as LineChartGenerator } from 'vue-chartjs'
 import {
-    Chart as ChartJS, Title, Tooltip, Legend, LineElement, LinearScale, CategoryScale, PointElement,
+    Chart as ChartJS, Title, Tooltip, Legend, LineElement, LinearScale, CategoryScale, PointElement, TimeScale
 } from 'chart.js'
-
+import 'chartjs-adapter-date-fns';
 import { customTooltip, htmlLegendPlugin } from '../helper/chart-helper'
 
 
@@ -26,13 +29,14 @@ ChartJS.register(Title,
     LineElement,
     LinearScale,
     CategoryScale,
-    PointElement)
+    PointElement,
+    TimeScale)
 
 var randomScalingFactor = function () {
     return Math.round(Math.random() * 900 + 100);
 };
 
-const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+const labels = ["2022-01-01", "2022-02-01", "2022-03-01", "2022-04-01", "2022-05-01", "2022-06-01", "2022-07-01", "2022-08-01", "2022-09-01", "2022-10-01", "2022-11-01", "2022-12-01"];
 
 const datasetOption = function (label, color) {
     return {
@@ -59,7 +63,7 @@ const datasets = [
     { label: 'Other Costs', color: '#ff607b' },
 ].map((item) => datasetOption(item.label, item.color))
 
-ChartJS.defaults.font.family = "'Poppins', sans-serif";
+ChartJS.defaults.font.family = '"Segoe UI", Tahoma, Geneva, Verdana, sans-serif';
 export default {
     name: 'LineChart',
     components: { LineChartGenerator },
@@ -91,7 +95,8 @@ export default {
                             padding: 20,
                             font: {
                                 size: 14,
-                                weight: 'bold'
+                                weight: 'bold',
+                                family: "'Poppins', sans-serif"
                             },
                             color: '#7E84A3',
                             stepSize: 200,
@@ -103,10 +108,27 @@ export default {
                     },
                     x: {
                         ticks: {
-                            color: '#7E84A3'
+                            color: '#7E84A3',
                         },
                         grid: {
                             display: false,
+                        },
+                        type: 'time',
+                        time: {
+                            unit: 'month',
+                            displayFormats: {
+                                month: 'MMM',
+                                quarter: 'MMM YYYY',
+                                millisecond: 'MMM YYYY',
+                                second: 'MMM YYYY',
+                                minute: 'MMM YYYY',
+                                hour: 'MMM YYYY',
+                                day: 'MMM YYYY',
+                                week: 'MMM YYYY',
+                                // month: 'MMM YYYY',
+                                // quarter: 'MMM YYYY',
+                                year: 'MMM YYYY',
+                            }
                         }
                     }
                 },

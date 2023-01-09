@@ -2,13 +2,16 @@
     <div>
         <h5 class="card-heading">Summary Report</h5>
         <div class="card card-body mb-3">
-            <div class="summary-wrapper">
-                <div v-for="(item, index) in summery_reports" :key="index" class="summary-item" :class="{ 'border-left-1': index !== 0 }" :style="{ width: 100 / summery_reports.length + '%' }">
+            <div class="summary-wrapper row">
+                <div v-for="(item, index) in summery_reports" :key="index" class="summary-item col-4 col-lg-auto" :class="{ 'border-lg-l-1 border-t-1 border-lg-t-0 pt-lg-0 pt-3 mt-3 mt-lg-0': index > 1, 'col-6': index < 2 }" :style="{ width: 100 / summery_reports.length + '%' }">
                     <div class="summary-subtitle">
                         <span>{{ item.label }}</span>
-                        <span class="summary-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"></path>
+                        <span class="summary-icon d-none">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15.384" height="15.384" viewBox="0 0 15.384 15.384" fill="currentColor">
+                                <g>
+                                    <path d="M0,0H15.384V15.384H0Z" fill="none" />
+                                    <path d="M1.652,9.629A5.64,5.64,0,1,1,9.629,1.652,5.64,5.64,0,1,1,1.652,9.629ZM.9,5.641A4.738,4.738,0,1,0,5.641.9,4.743,4.743,0,0,0,.9,5.641ZM5.128,7.692V5.128a.513.513,0,0,1,1.025,0V7.692a.513.513,0,1,1-1.025,0Zm0-4.1a.513.513,0,1,1,.513.513A.513.513,0,0,1,5.128,3.59Z" transform="translate(2.051 2.051)" />
+                                </g>
                             </svg>
                         </span>
                     </div>

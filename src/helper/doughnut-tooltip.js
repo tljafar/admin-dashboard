@@ -8,7 +8,8 @@ export const customDoughnutTooltip = function (context) {
   if (!tooltipEl) {
     tooltipEl = document.createElement("div");
     tooltipEl.id = tooltipElId;
-    tooltipEl.innerHTML = "<div></div>";
+    tooltipEl.classList.add("chart-pie-tooltip");
+    tooltipEl.innerHTML = '<div class="legend-content"></div>';
     canvas.parentElement.style.position = "relative";
     canvas.parentElement.appendChild(tooltipEl);
   }
@@ -28,10 +29,10 @@ export const customDoughnutTooltip = function (context) {
       let bodyLabel = body[0] || "";
       let bodyValue = body[1] || "";
       const colors = tooltipModel.labelColors[i];
-      innerHtml += `<div style="color: ${colors.backgroundColor}; font-size: 15px; line-height: 1">${bodyLabel}</div>`;
+      innerHtml += `<div style="color: ${colors.backgroundColor}; font-size: 15px; line-height: 1; margin-bottom: 10px;">${bodyLabel}</div>`;
       innerHtml += `<div style="color: #283977; font-size: 16px; line-height: 1">${bodyValue}</div>`;
     });
-    tooltipEl.innerHTML = `<div>${innerHtml}</div>`;
+    tooltipEl.innerHTML = `<div class="legend-content">${innerHtml}</div>`;
   }
   const cutout = parseInt(tooltipModel.dataPoints[0].dataset.cutout || "55%");
   const bodyFont = ChartJsHelpers.toFont(tooltipModel.options.bodyFont);

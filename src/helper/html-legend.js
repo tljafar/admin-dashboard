@@ -4,6 +4,7 @@ const getOrCreateLegendList = (chart, id) => {
 
   if (!listContainer) {
     listContainer = document.createElement("ul");
+    listContainer.classList.add("chart-line-legend");
     listContainer.style.display = "flex";
     listContainer.style.flexDirection = "row";
     listContainer.style.flexWrap = "wrap";
@@ -12,7 +13,6 @@ const getOrCreateLegendList = (chart, id) => {
     listContainer.style.margin = 0;
     listContainer.style.marginBottom = "0";
     listContainer.style.padding = 0;
-
     legendContainer.appendChild(listContainer);
   }
 
@@ -39,6 +39,7 @@ export const htmlLegendPlugin = {
       li.style.alignItems = "center";
 
       const groupBox = document.createElement("div");
+      groupBox.classList.add("legend-content");
       groupBox.style.alignItems = "center";
       groupBox.style.cursor = "pointer";
       groupBox.style.display = "flex";
@@ -96,12 +97,15 @@ export const htmlLegendPlugin = {
       textContainer.appendChild(text);
 
       const svgInfo = document.createElement("span");
-      svgInfo.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
-    </svg>`;
+      svgInfo.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="15.384" height="15.384" viewBox="0 0 15.384 15.384" fill="currentColor">
+      <g>
+          <path d="M0,0H15.384V15.384H0Z" fill="none" />
+          <path d="M1.652,9.629A5.64,5.64,0,1,1,9.629,1.652,5.64,5.64,0,1,1,1.652,9.629ZM.9,5.641A4.738,4.738,0,1,0,5.641.9,4.743,4.743,0,0,0,.9,5.641ZM5.128,7.692V5.128a.513.513,0,0,1,1.025,0V7.692a.513.513,0,1,1-1.025,0Zm0-4.1a.513.513,0,1,1,.513.513A.513.513,0,0,1,5.128,3.59Z" transform="translate(2.051 2.051)" />
+      </g>
+  </svg>`;
       svgInfo.style.width = "18px";
       svgInfo.style.height = "18px";
-      svgInfo.style.marginLeft = "18px";
+      svgInfo.style.marginLeft = "5px";
       svgInfo.style.display = "flex";
       svgInfo.style.cursor = "pointer";
       svgInfo.style.color = "#B8BED9";

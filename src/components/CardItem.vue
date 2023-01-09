@@ -1,26 +1,38 @@
 <template>
-    <div class="card card-body card-mini" :class="{ 'card-mini-dark': isDarkMode }">
-        <div class="card-mini-icon text-grey">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"></path>
+    <div class="card card-body card-mini" :class="{ 'card-mini-dark': isDarkMode, 'card-mini-list-scroll': item.child_items }" :style="[item.is_toggle_btn && item.enabled ===false && {'background-color': '#ffffff2e'}]">
+        <div class="card-mini-icon text-grey d-none">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15.384" height="15.384" viewBox="0 0 15.384 15.384" fill="currentColor">
+                <g>
+                    <path d="M0,0H15.384V15.384H0Z" fill="none" />
+                    <path d="M1.652,9.629A5.64,5.64,0,1,1,9.629,1.652,5.64,5.64,0,1,1,1.652,9.629ZM.9,5.641A4.738,4.738,0,1,0,5.641.9,4.743,4.743,0,0,0,.9,5.641ZM5.128,7.692V5.128a.513.513,0,0,1,1.025,0V7.692a.513.513,0,1,1-1.025,0Zm0-4.1a.513.513,0,1,1,.513.513A.513.513,0,0,1,5.128,3.59Z" transform="translate(2.051 2.051)" />
+                </g>
             </svg>
         </div>
-        <div class="d-flex justify-content-between mt-2 card-mini-title-wrapper">
+        <div class="d-flex justify-content-between card-mini-title-wrapper">
             <div class="card-mini-title text-grey">{{ item.label }}</div>
             <label v-if="item.is_toggle_btn" class="switch" :for="'card-mini-checkbox-' + index">
-                <input type="checkbox" :id="'card-mini-checkbox-' + index" :checked="item.enabled" />
+                <input type="checkbox" :id="'card-mini-checkbox-' + index" :checked="item.enabled" @change="item.enabled = $event.target.checked" />
                 <div class="slider round"></div>
             </label>
             <div v-else-if="item.percentage" class="card-mini-percentage ml-1" :class="[item.percentage >= 0 ? 'text-green' : 'text-red']">
                 <span>{{ item.percentage }}%</span>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" :class="{ 'rotate-180': item.percentage < 0 }">
-                    <path fill-rule="evenodd" d="M10 18a.75.75 0 01-.75-.75V4.66L7.3 6.76a.75.75 0 11-1.1-1.02l3.25-3.5a.75.75 0 011.1 0l3.25 3.5a.75.75 0 01-1.1 1.02l-1.95-2.1v12.59A.75.75 0 0110 18z" clip-rule="evenodd" />
+                <svg xmlns="http://www.w3.org/2000/svg" width="10.345" height="10.345" viewBox="0 0 10.345 10.345" fill="currentColor" class="ml-1" :class="{ 'rotate-180': item.percentage < 0 }">
+                    <path id="Path_10522" data-name="Path 10522" d="M6.651,0H3.326a.665.665,0,0,0,0,1.33h1.72L.195,6.181a.665.665,0,1,0,.94.94L5.986,2.271v1.72a.665.665,0,1,0,1.33,0V.665A.665.665,0,0,0,6.651,0Z" transform="matrix(0.695, -0.719, 0.719, 0.695, 0, 5.263)" />
                 </svg>
+
             </div>
         </div>
         <div class="d-flex justify-content-between align-items-end mt-2">
             <div class="card-mini-amount">{{ item.amount }}</div>
             <div v-if="item.symbol" class="card-mini-currency text-grey">{{ item.symbol }}</div>
+        </div>
+        <div v-if="item.child_items" class="card-mini-list">
+            <ul>
+                <li v-for="(c_item, index) in item.child_items" :key="index">
+                    <span>{{ c_item.label }}</span>
+                    <span>{{ c_item.amount }}</span>
+                </li>
+            </ul>
         </div>
     </div>
 </template>
@@ -41,6 +53,6 @@ export default {
             type: Object,
             default: () => ({})
         }
-    }
+    },
 }
 </script>

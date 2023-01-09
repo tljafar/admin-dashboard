@@ -71,7 +71,7 @@ export default {
             default: -1
         },
         cssClasses: {
-            default: 'h-100',
+            default: '',
             type: String
         },
         styles: {

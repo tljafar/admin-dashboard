@@ -1,10 +1,13 @@
 <template>
-  <div id="app" class="my-5 container">
-    <div class="d-lg-flex">
-      <div class="flex-fill border-right bg-secondary" style="opacity: 0.4; margin-right: 20px">
+  <div id="app" class="container">
+    <div class="bg-white d-none" style="height: 58px;display: flex;align-items: center;padding: 0 40px;">
+      <div style="font-size: 24px; font-weight: 700; font-family: 'Poppins';">Logo</div>
+    </div>
+    <div class="d-md-flex">
+      <div class="flex-fill border-right bg-secondary d-none" style="opacity: 0.4; margin-right: 20px">
         <div></div>
       </div>
-      <div class="dashboard-content">
+      <div class="dashboard-content mt-4">
         <div>
           <SummeryReport />
           <h5 class="card-heading">Analytics Overview</h5>
@@ -22,8 +25,8 @@
             </div>
           </div>
           <LinChart class="mb-3" />
-          <div class="page-seperator">Order Report</div>
-          <OrderReport />
+          <div class="page-seperator">Orders Report</div>
+          <OrdersReport />
           <div class="page-seperator">Print on Demand Report </div>
           <PrintOnDemandReport class="mb-4" />
           <div class="page-seperator">Profit Report</div>
@@ -33,6 +36,7 @@
           <div class="page-seperator">Metrics Report</div>
           <MetricsReport />
         </div>
+        <Footer />
       </div>
     </div>
 
@@ -41,10 +45,11 @@
 
 <script>
 import DoughnutChart from './components/DoughnutChart.vue';
+import Footer from './components/Footer.vue';
 import LinChart from './components/LinChart.vue';
 import MarketingReport from './components/MarketingReport.vue';
 import MetricsReport from './components/MetricsReport.vue';
-import OrderReport from './components/OrderReport.vue';
+import OrdersReport from './components/OrdersReport.vue';
 import PrintOnDemandReport from './components/PrintOnDemandReport.vue';
 import ProfitReport from './components/ProfitReport.vue';
 import ProgressChart from './components/ProgressChart.vue';
@@ -57,12 +62,13 @@ export default {
     ProgressChart,
     DoughnutChart,
     SummeryReport,
-    OrderReport,
+    OrdersReport,
     ProfitReport,
     MarketingReport,
     PrintOnDemandReport,
-    MetricsReport
-},
+    MetricsReport,
+    Footer
+  },
   data() {
     return {
       isContainerFluid: false

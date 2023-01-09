@@ -18,13 +18,13 @@
         </div>
 
         <div style="display: flex; margin-top: 15px; margin-bottom: 10px;">
-            <div v-for="(item, index) in stackdatasets" :key="index" :style="{ marginLeft: index !== 0 ? '-4px' : '', display: 'block', backgroundColor: item.color, borderRadius: '8px', height: '8px', width: item.percentage }"></div>
+            <div v-for="(item, index) in stackdatasets" :key="index" :style="[stackdatasets.length === index + 1 && {flex: 1}, { marginLeft: index !== 0 ? '-4px' : '', display: 'block', backgroundColor: item.color, borderRadius: '8px', height: '8px', width: item.percentage }]"></div>
         </div>
     </div>
 </template>
 <script>
 var randomScalingFactor = function () {
-    const value = Math.round(Math.random() * 800 + 200);
+    const value = Math.round(Math.random() * 80000 + 20000);
     const formatedValue = new Intl.NumberFormat('en-US', { currency: 'USD', style: 'currency' }).format(value);
     return {
         value,

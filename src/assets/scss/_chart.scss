@@ -1,0 +1,11 @@
+ul.chart-line-legend, .chart-pie-tooltip {
+  .legend-content {
+    font-family: $font-family-secondary;
+  }
+}
+
+.chart-line-wrapper{
+  @include media-breakpoint-down(lg){
+    width: 850px;
+  }
+}
