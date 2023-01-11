@@ -1,40 +1,48 @@
 <template>
-    <component v-bind:is="tag" class="card card-body card-mini" :class="{ 'card-mini-dark': isDarkMode, 'card-mini-list-scroll': item.child_items }" :style="[item.is_toggle_btn && item.enabled === false && { 'background-color': '#ffffff2e' }]">
-        <div class="card-mini-icon text-grey d-none">
-            <svg xmlns="http://www.w3.org/2000/svg" width="15.384" height="15.384" viewBox="0 0 15.384 15.384" fill="currentColor">
-                <g>
-                    <path d="M0,0H15.384V15.384H0Z" fill="none" />
-                    <path d="M1.652,9.629A5.64,5.64,0,1,1,9.629,1.652,5.64,5.64,0,1,1,1.652,9.629ZM.9,5.641A4.738,4.738,0,1,0,5.641.9,4.743,4.743,0,0,0,.9,5.641ZM5.128,7.692V5.128a.513.513,0,0,1,1.025,0V7.692a.513.513,0,1,1-1.025,0Zm0-4.1a.513.513,0,1,1,.513.513A.513.513,0,0,1,5.128,3.59Z" transform="translate(2.051 2.051)" />
-                </g>
-            </svg>
-        </div>
-        <div class="d-flex justify-content-between card-mini-title-wrapper">
-            <div class="card-mini-title text-grey">{{ item.label }}</div>
-            <label v-if="item.is_toggle_btn" class="switch" :for="'card-mini-checkbox-' + index">
-                <input type="checkbox" :id="'card-mini-checkbox-' + index" :checked="item.enabled" @change="item.enabled = $event.target.checked" />
-                <div class="slider round"></div>
-            </label>
-            <div v-else-if="item.percentage" class="card-mini-percentage ml-1" :class="[item.percentage >= 0 ? 'text-green' : 'text-red']">
-                <span>{{ item.percentage }}%</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="10.345" height="10.345" viewBox="0 0 10.345 10.345" fill="currentColor" class="ml-1" :class="{ 'rotate-180': item.percentage < 0 }">
-                    <path id="Path_10522" data-name="Path 10522" d="M6.651,0H3.326a.665.665,0,0,0,0,1.33h1.72L.195,6.181a.665.665,0,1,0,.94.94L5.986,2.271v1.72a.665.665,0,1,0,1.33,0V.665A.665.665,0,0,0,6.651,0Z" transform="matrix(0.695, -0.719, 0.719, 0.695, 0, 5.263)" />
-                </svg>
+    <div v-tooltip="{ content: item.tooltip || '' }">
+        <component
+            v-bind:is="tag"
+            class="card"
+            :class="{ 'card-mini-dark': isDarkMode, 'card-mini-list-scroll': item.child_items }"
+            :style="[item.is_toggle_btn && item.enabled === false && { 'background-color': '#ffffff2e' }]">
+            <div class="card-body card-mini">
+                <div class="card-mini-icon text-grey d-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15.384" height="15.384" viewBox="0 0 15.384 15.384" fill="currentColor">
+                        <g>
+                            <path d="M0,0H15.384V15.384H0Z" fill="none" />
+                            <path d="M1.652,9.629A5.64,5.64,0,1,1,9.629,1.652,5.64,5.64,0,1,1,1.652,9.629ZM.9,5.641A4.738,4.738,0,1,0,5.641.9,4.743,4.743,0,0,0,.9,5.641ZM5.128,7.692V5.128a.513.513,0,0,1,1.025,0V7.692a.513.513,0,1,1-1.025,0Zm0-4.1a.513.513,0,1,1,.513.513A.513.513,0,0,1,5.128,3.59Z" transform="translate(2.051 2.051)" />
+                        </g>
+                    </svg>
+                </div>
+                <div class="d-flex justify-content-between card-mini-title-wrapper">
+                    <div class="card-mini-title text-grey">{{ item.label }}</div>
+                    <label v-if="item.is_toggle_btn" class="switch" :for="'card-mini-checkbox-' + index">
+                        <input type="checkbox" :id="'card-mini-checkbox-' + index" :checked="item.enabled" @change="item.enabled = $event.target.checked" />
+                        <div class="slider round"></div>
+                    </label>
+                    <div v-else-if="item.percentage" class="card-mini-percentage ml-1" :class="[item.percentage >= 0 ? 'text-green' : 'text-red']">
+                        <span>{{ item.percentage }}%</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="10.345" height="10.345" viewBox="0 0 10.345 10.345" fill="currentColor" class="ml-1" :class="{ 'rotate-180': item.percentage < 0 }">
+                            <path id="Path_10522" data-name="Path 10522" d="M6.651,0H3.326a.665.665,0,0,0,0,1.33h1.72L.195,6.181a.665.665,0,1,0,.94.94L5.986,2.271v1.72a.665.665,0,1,0,1.33,0V.665A.665.665,0,0,0,6.651,0Z" transform="matrix(0.695, -0.719, 0.719, 0.695, 0, 5.263)" />
+                        </svg>
 
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between align-items-end mt-2">
+                    <div class="card-mini-amount">{{ item.amount }}</div>
+                    <div v-if="item.symbol" class="card-mini-currency text-grey">{{ item.symbol }}</div>
+                </div>
+                <div v-if="item.child_items" class="card-mini-list">
+                    <ul>
+                        <li v-for="(c_item, index) in item.child_items" :key="index">
+                            <span>{{ c_item.label }}</span>
+                            <span>{{ c_item.amount }}</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="d-flex justify-content-between align-items-end mt-2">
-            <div class="card-mini-amount">{{ item.amount }}</div>
-            <div v-if="item.symbol" class="card-mini-currency text-grey">{{ item.symbol }}</div>
-        </div>
-        <div v-if="item.child_items" class="card-mini-list">
-            <ul>
-                <li v-for="(c_item, index) in item.child_items" :key="index">
-                    <span>{{ c_item.label }}</span>
-                    <span>{{ c_item.amount }}</span>
-                </li>
-            </ul>
-        </div>
-    </component>
+        </component>
+    </div>
 </template>
 
 <script>

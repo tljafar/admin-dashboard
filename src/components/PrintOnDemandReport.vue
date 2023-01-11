@@ -3,6 +3,7 @@
 </template>
 <script>
 import { randomScalingFactor } from '../helper';
+import tooltips from '../helper/tooltips';
 import LongCardMini from './LongCardMini.vue';
 const maximum = 100000;
 
@@ -12,8 +13,8 @@ export default {
     data() {
         return {
             items: [
-                { label: 'Printify Total Costs', amount: randomScalingFactor(maximum).formatedValue, logo: 'printify' },
-                { label: 'Printful Total Costs', amount: randomScalingFactor(maximum).formatedValue, logo: 'printful' },
+                { label: 'Printify Total Costs', amount: randomScalingFactor(maximum).formatedValue, logo: 'printify', tooltip: tooltips.printify_total_costs },
+                { label: 'Printful Total Costs', amount: randomScalingFactor(maximum).formatedValue, logo: 'printful', tooltip: tooltips.printiful_total_costs },
             ]
         }
     }

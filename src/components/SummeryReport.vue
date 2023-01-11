@@ -4,7 +4,11 @@
         <div class="">
             <simplebar class="card card-body mb-3">
                 <div class="summary-wrapper">
-                    <div v-for="(item, index) in summery_reports" :key="index" class="summary-item" :class="{ 'border-l-1': index !== 0 }">
+                    <div v-for="(item, index) in summery_reports"
+                        :key="index"
+                        class="summary-item"
+                        :class="{ 'border-l-1': index !== 0 }"
+                        v-tooltip="{ content: item.tooltip || '' }">
                         <div class="summary-subtitle">
                             <span>{{ item.label }}</span>
                             <span class="summary-icon d-none">
@@ -33,16 +37,17 @@
 <script>
 import { randomScalingFactor, randomPercentageFactor } from '../helper'
 import simplebar from 'simplebar-vue';
+import tooltips from '../helper/tooltips';
 export default {
     name: 'SummeryReport',
     components: { simplebar },
     data() {
         return {
             summery_reports: [
-                { label: 'Revenue', color: '#283977', value: randomScalingFactor(), percentage: randomPercentageFactor(), tooltip: '' },
-                { label: 'Net Profit', color: '#55efc4', value: randomScalingFactor(), percentage: randomPercentageFactor(), tooltip: '' },
-                { label: 'Marketing Costs', color: '#ff9e0e', value: randomScalingFactor(), percentage: randomPercentageFactor(), tooltip: '' },
-                { label: 'COGS & POD Costs', color: '#0058ff', value: randomScalingFactor(), percentage: randomPercentageFactor(), tooltip: '' },
+                { label: 'Revenue', color: '#283977', value: randomScalingFactor(), percentage: randomPercentageFactor(), tooltip: tooltips.revenue },
+                { label: 'Net Profit', color: '#55efc4', value: randomScalingFactor(), percentage: randomPercentageFactor(), tooltip: tooltips.net_profit },
+                { label: 'Marketing Costs', color: '#ff9e0e', value: randomScalingFactor(), percentage: randomPercentageFactor(), tooltip: tooltips.marketing_costs },
+                { label: 'COGS & POD Costs', color: '#0058ff', value: randomScalingFactor(), percentage: randomPercentageFactor(), tooltip: tooltips.cogs_pod_total_costs },
                 { label: 'Other Costs', color: '#ff607b', value: randomScalingFactor(), percentage: randomPercentageFactor(), tooltip: '' },
             ]
         }

@@ -1,35 +1,41 @@
 <template>
-  <div id="app" class="container-fluid">
-    <div class="dashboard-content mt-4">
-      <div>
-        <SummeryReport />
-        <h5 class="card-heading">Analytics Overview</h5>
-        <div class="row">
-          <div class="col-lg-8 col-lg-70 mb-3">
-            <div class="card card-body h-100">
+  <div id="app" class="container">
+    <div class="bg-white" style="height: 58px;display: flex;align-items: center;padding: 0 40px;">
+      <div style="font-size: 24px; font-weight: 700; font-family: 'Poppins';">Logo</div>
+    </div>
+    <div class="d-lg-flex">
+      <div class="flex-fill border-right bg-secondary" style="opacity: 0.4; margin-right: 15px; width: 200px;">
+        <div></div>
+      </div>
+      <div class="dashboard-content mt-4">
+        <div>
+          <SummeryReport />
+          <h5 class="card-heading">Analytics Overview</h5>
+          <div class="row">
+            <div class="col-lg-8 col-lg-70 mb-3">
               <ProgressChart />
             </div>
-          </div>
-          <div class="col-lg-4 col-lg-30 mb-3">
-            <div class="card card-body h-100">
-              <h5 class="card-subheading">Cost Breakdown</h5>
-              <DoughnutChart />
+            <div class="col-lg-4 col-lg-30 mb-3">
+              <div class="card card-body h-100">
+                <h5 class="card-subheading">Cost Breakdown</h5>
+                <DoughnutChart />
+              </div>
             </div>
           </div>
+          <LineChart class="mb-3" />
+          <div class="page-seperator">Orders Report</div>
+          <OrdersReport />
+          <div class="page-seperator">Print on Demand Report </div>
+          <PrintOnDemandReport class="mb-4" />
+          <div class="page-seperator">Profit Report</div>
+          <ProfitReport />
+          <div class="page-seperator">Marketing Report</div>
+          <MarketingReport class="mb-4" />
+          <div class="page-seperator">Metrics Report</div>
+          <MetricsReport />
         </div>
-        <LineChart class="mb-3" />
-        <div class="page-seperator">Orders Report</div>
-        <OrdersReport />
-        <div class="page-seperator">Print on Demand Report </div>
-        <PrintOnDemandReport class="mb-4" />
-        <div class="page-seperator">Profit Report</div>
-        <ProfitReport />
-        <div class="page-seperator">Marketing Report</div>
-        <MarketingReport class="mb-4" />
-        <div class="page-seperator">Metrics Report</div>
-        <MetricsReport />
+        <Footer />
       </div>
-      <Footer />
     </div>
   </div>
 </template>

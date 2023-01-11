@@ -1,7 +1,7 @@
 <template>
     <div class="long-mini-card row">
         <div v-for="(item, index) in items" :key="index" class="long-mini-card-item" :class="[columnClassName]">
-            <div class="card card-body card-mini card-mini-wide" :class="{ 'card-mini-dark': isDarkMode }">
+            <div class="card card-body card-mini card-mini-wide" :class="{ 'card-mini-dark': isDarkMode }" v-tooltip="{ content: item.tooltip || '' }">
                 <div class="card-content d-flex justify-content-center">
                     <img v-if="item.logo === 'printify'" src="@/assets/images/printify.svg" alt="logo" style="width: 20px; height: 20px; margin-top: -3px; margin-right: 5px;">
                     <img v-if="item.logo === 'printful'" src="@/assets/images/printful.svg" alt="logo" style="width: 25px; height: 25px; margin-top: -4px; margin-right: 5px;">

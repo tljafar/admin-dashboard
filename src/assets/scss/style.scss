@@ -9,14 +9,15 @@
 @import "chart";
 @import "simplebar";
 @import "long-mini-card";
+@import "floating";
 
 body {
   background-color: $bg !important;
   font-weight: 400;
 }
 .dashboard-content {
-  @include media-breakpoint-up(md) {
-    // width: calc(100% - 215px);
+  @include media-breakpoint-up(lg) {
+    width: calc(100% - 215px);
   }
 }
 .page-seperator-border {
@@ -42,7 +43,9 @@ body {
   border-color: #e9ecef;
   box-shadow: 2px 2px 2px #69696916;
   border-radius: 0.55rem;
-  padding: 16px;
+  &-body {
+    padding: 16px;
+  }
 }
 .card-heading {
   font-size: 18px;

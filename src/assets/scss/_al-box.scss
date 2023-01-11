@@ -1,4 +1,9 @@
 .al-box {
+  @include media-breakpoint-down(sm){
+    &-container{
+      min-width: 620px;
+    }
+  }
   &-list {
     display: flex;
     list-style-type: none;
