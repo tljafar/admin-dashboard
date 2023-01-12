@@ -14,7 +14,6 @@ export const customDoughnutTooltip = function (context) {
     canvas.parentElement.appendChild(tooltipEl);
   }
 
-  // const { ctx, chartArea: { top, width, height } } = context.chart
   // Hide if no tooltip
   const tooltipModel = context.chart.tooltip;
   if (tooltipModel.opacity === 0) {

@@ -18,7 +18,7 @@
 </template>
 <script>
 import { randomScalingFactor, randomPercentageFactor } from '../helper'
-import tooltips from '../helper/tooltips';
+import tooltips from '../helper/floating/tooltips';
 import CardItem from './CardItem.vue';
 const maximum = 100000;
 export default {
@@ -32,7 +32,7 @@ export default {
                 { label: 'Transactions fees', amount: randomScalingFactor(maximum).formatedValue, percentage: randomPercentageFactor(), symbol: 'USD', is_toggle_btn: false, enabled: false, tooltip: tooltips.transaction_fees },
                 { label: 'Tax Charged', amount: randomScalingFactor(maximum).formatedValue, percentage: randomPercentageFactor(), symbol: 'USD', is_toggle_btn: true, enabled: true },
                 { label: 'Shipping Charged', amount: randomScalingFactor(maximum).formatedValue, percentage: randomPercentageFactor(), symbol: 'USD', is_toggle_btn: false, enabled: false, tooltip: tooltips.shipping_charge },
-                { label: 'Shipping Costs', amount: randomScalingFactor(maximum).formatedValue, percentage: randomPercentageFactor(), symbol: 'USD', is_toggle_btn: false, enabled: false },
+                { label: 'Shipping Costs', amount: randomScalingFactor(maximum).formatedValue, percentage: randomPercentageFactor(), symbol: 'USD', is_toggle_btn: false, enabled: false, tooltip: tooltips.shipping_costs },
                 { label: 'Discounts', amount: randomScalingFactor(maximum).formatedValue, percentage: randomPercentageFactor(), symbol: 'USD', is_toggle_btn: false, enabled: false },
                 { label: 'Refunds', amount: randomScalingFactor(maximum).formatedValue, percentage: randomPercentageFactor(), symbol: 'USD', is_toggle_btn: false, enabled: false, tooltip: tooltips.refunds },
                 { label: 'Handing fees', amount: randomScalingFactor(maximum).formatedValue, percentage: randomPercentageFactor(), symbol: 'USD', is_toggle_btn: false, enabled: false },

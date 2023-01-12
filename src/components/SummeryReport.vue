@@ -37,7 +37,7 @@
 <script>
 import { randomScalingFactor, randomPercentageFactor } from '../helper'
 import simplebar from 'simplebar-vue';
-import tooltips from '../helper/tooltips';
+import tooltips from '../helper/floating/tooltips';
 export default {
     name: 'SummeryReport',
     components: { simplebar },
@@ -47,8 +47,8 @@ export default {
                 { label: 'Revenue', color: '#283977', value: randomScalingFactor(), percentage: randomPercentageFactor(), tooltip: tooltips.revenue },
                 { label: 'Net Profit', color: '#55efc4', value: randomScalingFactor(), percentage: randomPercentageFactor(), tooltip: tooltips.net_profit },
                 { label: 'Marketing Costs', color: '#ff9e0e', value: randomScalingFactor(), percentage: randomPercentageFactor(), tooltip: tooltips.marketing_costs },
-                { label: 'COGS & POD Costs', color: '#0058ff', value: randomScalingFactor(), percentage: randomPercentageFactor(), tooltip: tooltips.cogs_pod_total_costs },
-                { label: 'Other Costs', color: '#ff607b', value: randomScalingFactor(), percentage: randomPercentageFactor(), tooltip: '' },
+                { label: 'COGS & POD Costs', color: '#0058ff', value: randomScalingFactor(), percentage: randomPercentageFactor(), tooltip: tooltips.cogs_pod_total_costs({ cogs: randomScalingFactor().formatedValue, printful: randomScalingFactor().formatedValue, printify: randomScalingFactor().formatedValue }) },
+                { label: 'Other Costs', color: '#ff607b', value: randomScalingFactor(), percentage: randomPercentageFactor(), tooltip: tooltips.other_costs({ custom: randomScalingFactor().formatedValue, handling: randomScalingFactor().formatedValue, shipping: randomScalingFactor().formatedValue, transaction: randomScalingFactor().formatedValue }) },
             ]
         }
     }

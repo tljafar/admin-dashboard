@@ -13,7 +13,7 @@
 
 <script>
 import { Doughnut } from 'vue-chartjs/legacy'
-import { customDoughnutTooltip, setInitTooltipValue } from '../helper/chart-helper'
+import { customDoughnutTooltip, setInitTooltipValue } from '../helper/chart'
 
 import {
     Chart as ChartJS,
@@ -23,12 +23,11 @@ import {
     ArcElement,
     CategoryScale
 } from 'chart.js'
+import { randomScalingFactor, currencyFormat } from '../helper';
 
 ChartJS.register(Title, Tooltip, Legend, ArcElement, CategoryScale)
 
-var randomScalingFactor = function () {
-    return Math.round(Math.random() * 900000 + 100);
-};
+
 
 const datasetsObj = [
     { label: 'Revenue', color: '#283977' },
@@ -41,7 +40,7 @@ const labels = datasetsObj.map(item => item.label)
 
 const datasets = {
     backgroundColor: datasetsObj.map(item => item.color),
-    data: datasetsObj.map(() => randomScalingFactor()),
+    data: datasetsObj.map(() => randomScalingFactor(100000)),
     borderRadius: 5,
     cutout: '70%',
     hoverBorderWidth: 0,
@@ -107,7 +106,7 @@ export default {
                             label: function (context) {
                                 let label = [context.label || ''];
                                 if (context.parsed !== null) {
-                                    label.push(new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(context.parsed));
+                                    label.push(currencyFormat(context.parsed));
                                 }
                                 return label;
                             }

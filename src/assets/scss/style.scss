@@ -17,7 +17,7 @@ body {
 }
 .dashboard-content {
   @include media-breakpoint-up(lg) {
-    width: calc(100% - 215px);
+    // width: calc(100% - 215px);
   }
 }
 .page-seperator-border {

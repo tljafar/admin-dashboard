@@ -3,7 +3,7 @@
 </template>
 <script>
 import { randomScalingFactor } from '../helper';
-import tooltips from '../helper/tooltips';
+import tooltips from '../helper/floating/tooltips';
 import LongCardMini from './LongCardMini.vue';
 const maximum = 100000;
 

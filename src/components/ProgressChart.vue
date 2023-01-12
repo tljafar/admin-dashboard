@@ -26,26 +26,19 @@
 </template>
 <script>
 import simplebar from 'simplebar-vue'
-var randomScalingFactor = function () {
-    const value = Math.round(Math.random() * 80000 + 20000);
-    const formatedValue = new Intl.NumberFormat('en-US', { currency: 'USD', style: 'currency' }).format(value);
-    return {
-        value,
-        formatedValue
-    }
-};
-
+import { randomScalingFactor } from '../helper';
+const maximum = 10000;
 export default {
     name: 'ProgressBar',
     components: { simplebar },
     data() {
         return {
             datasets: [
-                { label: 'Net Profit', color: '#55efc4', ...randomScalingFactor(), is_box: false },
-                { label: 'Marketing Costs', color: '#ff9e0e', ...randomScalingFactor(), is_box: false },
-                { label: 'Revenue', color: '#283977', ...randomScalingFactor(), is_box: true },
-                { label: 'COGS & POD Costs', color: '#0058ff', ...randomScalingFactor(), is_box: false },
-                { label: 'Other Costs', color: '#ff607b', ...randomScalingFactor(), is_box: false },
+                { label: 'Net Profit', color: '#55efc4', ...randomScalingFactor(maximum), is_box: false },
+                { label: 'Marketing Costs', color: '#ff9e0e', ...randomScalingFactor(maximum), is_box: false },
+                { label: 'Revenue', color: '#283977', ...randomScalingFactor(maximum), is_box: true },
+                { label: 'COGS & POD Costs', color: '#0058ff', ...randomScalingFactor(maximum), is_box: false },
+                { label: 'Other Costs', color: '#ff607b', ...randomScalingFactor(maximum), is_box: false },
             ]
         }
     },

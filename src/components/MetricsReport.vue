@@ -8,7 +8,7 @@
 <script>
 import { randomScalingFactor, randomPercentageFactor } from '../helper'
 import CardItem from './CardItem.vue';
-import tooltips from '../helper/tooltips'
+import tooltips from '../helper/floating/tooltips'
 const maximum = 100000;
 export default {
     name: "MetricsReport",

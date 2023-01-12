@@ -11,7 +11,6 @@ export const customTooltip = function (context) {
     tooltipEl.id = "chartjs-tooltip";
     tooltipEl.innerHTML = "<table></table>";
     context.chart.canvas.parentElement.appendChild(tooltipEl);
-    // document.body.appendChild(tooltipEl);
   }
 
   // Hide if no tooltip
@@ -73,12 +72,11 @@ export const customTooltip = function (context) {
 
   tooltipEl.style.opacity = 1;
   tooltipEl.style.position = "absolute";
-  tooltipEl.style.left = positionX + tooltipModel.caretX + 20 + "px"; //position.left + window.pageXOffset + tooltipModel.caretX + 20 + "px";
+  tooltipEl.style.left = positionX + tooltipModel.caretX + 20 + "px";
   if (position.width / 2 < tooltipModel.caretX) {
     tooltipEl.style.left = positionX + tooltipModel.caretX - tableRoot.offsetWidth - 35 + "px";
   }
-  // console.log(tooltipModel);
-  tooltipEl.style.top = positionY + tooltipModel.height / 2 + "px"; // canvas.height / 2 + "px";
+  tooltipEl.style.top = positionY + tooltipModel.height / 2 + "px";
   tooltipEl.style.font = bodyFont.string;
   tooltipEl.style.padding = tooltipModel.padding + "px " + tooltipModel.padding + "px";
   tooltipEl.style.pointerEvents = "none";

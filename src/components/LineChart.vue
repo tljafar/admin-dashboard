@@ -15,13 +15,13 @@
   
 <script>
 import simplebar from 'simplebar-vue';
-
 import { Line as LineChartGenerator } from 'vue-chartjs'
 import {
     Chart as ChartJS, Title, Tooltip, Legend, LineElement, LinearScale, CategoryScale, PointElement, TimeScale
 } from 'chart.js'
 import 'chartjs-adapter-date-fns';
-import { customTooltip, htmlLegendPlugin } from '../helper/chart-helper'
+import { customTooltip, htmlLegendPlugin } from '../helper/chart'
+import { randomScalingFactor, currencyFormat } from '../helper';
 
 
 ChartJS.register(Title,
@@ -32,10 +32,6 @@ ChartJS.register(Title,
     CategoryScale,
     PointElement,
     TimeScale)
-
-var randomScalingFactor = function () {
-    return Math.round(Math.random() * 900 + 100);
-};
 
 const labels = ["2022-01-01", "2022-02-01", "2022-03-01", "2022-04-01", "2022-05-01", "2022-06-01", "2022-07-01", "2022-08-01", "2022-09-01", "2022-10-01", "2022-11-01", "2022-12-01"];
 
@@ -52,7 +48,7 @@ const datasetOption = function (label, color) {
         pointHoverBackgroundColor: 'white',
         pointHoverRadius: 5,
         pointHoverBorderWidth: 3,
-        data: labels.map(() => randomScalingFactor())
+        data: labels.map(() => randomScalingFactor(100).value)
     }
 }
 
@@ -126,8 +122,6 @@ export default {
                                 hour: 'MMM YYYY',
                                 day: 'MMM YYYY',
                                 week: 'MMM YYYY',
-                                // month: 'MMM YYYY',
-                                // quarter: 'MMM YYYY',
                                 year: 'MMM YYYY',
                             }
                         }
@@ -168,7 +162,7 @@ export default {
                             label: function (context) {
                                 let label = [context.dataset.label || ''];
                                 if (context.parsed.y !== null) {
-                                    label.push(new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(context.parsed.y));
+                                    label.push(currencyFormat(context.parsed.y, ''));
                                 }
                                 return label;
                             }
