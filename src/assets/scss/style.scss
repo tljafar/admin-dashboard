@@ -1,5 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap");
-@import "../../../node_modules/bootstrap/scss/bootstrap.scss";
+
+@import "../../../node_modules/bootstrap/scss/functions";
+@import "../../../node_modules/bootstrap/scss/variables";
+@import "../../../node_modules/bootstrap/scss/mixins";
 
 @import "variable";
 @import "al-box";
@@ -14,6 +17,7 @@
 body {
   background-color: $bg !important;
   font-weight: 400;
+  font-family: $font-family-primary !important;
 }
 .dashboard-content {
   @include media-breakpoint-up(lg) {
@@ -98,17 +102,17 @@ body {
   }
 }
 
-@each $name, $value in $colors {
-  .text-#{$name} {
-    color: $value;
-  }
-  .bg-#{$name} {
-    background-color: $value;
-  }
-  .border-#{$name} {
-    border-color: $value;
-  }
-}
+// @each $name, $value in $colors {
+//   .text-#{$name} {
+//     color: $value;
+//   }
+//   .bg-#{$name} {
+//     background-color: $value;
+//   }
+//   .border-#{$name} {
+//     border-color: $value;
+//   }
+// }
 
 .rotate-180 {
   transform: rotate(180deg);
@@ -122,6 +126,7 @@ footer {
   margin-right: -9px;
   margin-left: -9px;
 }
+
 .col-xl,
 .col-xl-auto,
 .col-xl-12,
