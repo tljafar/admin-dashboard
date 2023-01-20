@@ -102,17 +102,17 @@ body {
   }
 }
 
-// @each $name, $value in $colors {
-//   .text-#{$name} {
-//     color: $value;
-//   }
-//   .bg-#{$name} {
-//     background-color: $value;
-//   }
-//   .border-#{$name} {
-//     border-color: $value;
-//   }
-// }
+@each $name, $value in $colors {
+  .text-#{$name} {
+    color: $value;
+  }
+  .bg-#{$name} {
+    background-color: $value;
+  }
+  .border-#{$name} {
+    border-color: $value;
+  }
+}
 
 .rotate-180 {
   transform: rotate(180deg);
